@@ -57,7 +57,7 @@ function Remove-BloatwareAppsList() {
         # Default Windows 11 apps
         "Clipchamp.Clipchamp"				     # Clipchamp – Video Editor
         "Microsoft.OutlookForWindows"            # Microsoft Outlook
-        "M*S*Teams"                              # Microsoft Teams (24H2 or older)
+        #"MicrosoftTeams"                         # Microsoft Teams
         "MicrosoftWindows.Client.WebExperience"  # Taskbar Widgets
 
         # [DIY] Remove the # to Uninstall
@@ -68,7 +68,7 @@ function Remove-BloatwareAppsList() {
         #"Microsoft.WindowsCalculator"      # Calculator
         #"Microsoft.WindowsCamera"          # Camera
         #"Microsoft.ScreenSketch"           # Snip and Sketch (now called Snipping tool, replaces the Win32 version in clean installs)
-        #"Microsoft.Windows.DevHome"        # Dev Home
+        "Microsoft.Windows.DevHome"        # Dev Home
         #"Microsoft.Windows.Photos"         # Photos / Video Editor
 
         # [DIY] Can't be reinstalled
@@ -93,7 +93,7 @@ function Remove-BloatwareAppsList() {
         "*COOKINGFEVER*"
         "*CyberLinkMediaSuiteEssentials*"
         "*DisneyMagicKingdoms*"
-        "*Dolby*"                           # Dolby Products (Like Atmos)
+        #"*Dolby*"                           # Dolby Products (Like Atmos)
         "*DrawboardPDF*"
         "*Duolingo-LearnLanguagesforFree*"  # Duolingo
         "*EclipseManager*"
