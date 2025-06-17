@@ -140,7 +140,8 @@ function Disable-DarkTheme() {
 }
 
 function Enable-DarkTheme() {
-    Write-Status -Types "+", "Personal" -Status "Enabling Dark Theme..."
+    #changed to "-" from "+"
+    Write-Status -Types "-", "Personal" -Status "Enabling Dark Theme..."
     Set-ItemPropertyVerified -Path "$PathToCUThemes" -Name "AppsUseLightTheme" -Type DWord -Value 0
     Set-ItemPropertyVerified -Path "$PathToCUThemes" -Name "SystemUsesLightTheme" -Type DWord -Value 0
 }
