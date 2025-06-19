@@ -152,9 +152,10 @@ function Register-PersonalTweaksList() {
 
     Write-Section "Task Bar Tweaks"
     Write-Caption "Task Bar - Windows 10 Compatible"
-    Write-Status -Types $EnableStatus[2].Symbol, $TweakType -Status "$($EnableStatus[0].Status) the 'Search Box' from Taskbar..."
+    Write-Status -Types $EnableStatus[0].Symbol, $TweakType -Status "$($EnableStatus[0].Status) the 'Search Box' from Taskbar..."
     # [@] (0 = Hide completely, 1 = Show icon only, 2 = Show long Search Box, 3 = Search Icon and Label (Windows 11))
-    Set-ItemPropertyVerified -Path "$PathToCUWindowsSearch" -Name "SearchboxTaskbarMode" -Type DWord -Value $Zero
+    # Set-ItemPropertyVerified -Path "$PathToCUWindowsSearch" -Name "SearchboxTaskbarMode" -Type DWord -Value $Zero
+    Set-ItemPropertyVerified -Path "$PathToCUWindowsSearch" -Name "SearchboxTaskbarMode" -Type DWord -Value 2
 
     Write-Status -Types $EnableStatus[0].Symbol, $TweakType -Status "$($EnableStatus[0].Status) Windows search highlights from Taskbar..."
     Set-ItemPropertyVerified -Path "$PathToLMPoliciesWindowsSearch" -Name "EnableDynamicContentInWSB" -Type DWord -Value $Zero
