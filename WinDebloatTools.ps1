@@ -61,9 +61,9 @@ function Main() {
             Write-Caption "Arguments: $args"
         } Else { Write-Caption "Arguments: None, running GUI" }
 
-        If ($Mode -eq 'CLI2') {
+        If ($Mode -eq 'CLI') {
             Open-DebloatScript -Mode $Mode
-        } elseif ($Mode -eq 'CLI') {
+        } elseif ($Mode -eq 'CLI2') {
             Open-DebloatScript2 -Mode $Mode
         } Else { Show-GUI }
     }
@@ -129,7 +129,7 @@ function Open-DebloatScript {
         "Optimize-WindowsFeaturesList.ps1"
     )
 
-    If ($Mode -eq 'CLI') {
+    If ($Mode -eq 'CLI2') {
         Open-PowerShellFilesCollection -RelativeLocation "src\scripts" -Scripts $Scripts -DoneTitle $DoneTitle -DoneMessage $DoneMessage -OpenFromGUI $false
     } ElseIf ($Mode -eq 'GUI') {
         Open-PowerShellFilesCollection -RelativeLocation "src\scripts" -Scripts $Scripts -DoneTitle $DoneTitle -DoneMessage $DoneMessage
