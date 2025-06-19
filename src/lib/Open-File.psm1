@@ -6,12 +6,13 @@ function Open-PowerShellFilesCollection {
     param (
         [Parameter(Position = 0, Mandatory)]
         [String]   $RelativeLocation,
+        [Switch]   $NoDialog,
         [Parameter(Position = 1, Mandatory)]
         [String[]] $Scripts,
         [String]   $DoneTitle,
         [String]   $DoneMessage,
-        [Bool]     $OpenFromGUI = $true,
-        [Switch]   $NoDialog
+        [Bool]     $OpenFromGUI = $true
+        
     )
 
     Push-Location -Path $(Join-Path -Path "$PSScriptRoot\..\.." -ChildPath "$RelativeLocation")
