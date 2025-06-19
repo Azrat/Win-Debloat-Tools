@@ -1,4 +1,4 @@
-﻿Import-Module -DisableNameChecking "$PSScriptRoot\..\lib\Get-HardwareInfo.psm1"
+Import-Module -DisableNameChecking "$PSScriptRoot\..\lib\Get-HardwareInfo.psm1"
 Import-Module -DisableNameChecking "$PSScriptRoot\..\lib\Open-File.psm1"
 Import-Module -DisableNameChecking "$PSScriptRoot\..\lib\Title-Templates.psm1"
 Import-Module -DisableNameChecking "$PSScriptRoot\..\lib\debloat-helper\Remove-ItemVerified.psm1"
@@ -152,7 +152,7 @@ function Register-PersonalTweaksList() {
 
     Write-Section "Task Bar Tweaks"
     Write-Caption "Task Bar - Windows 10 Compatible"
-    Write-Status -Types $EnableStatus[0].Symbol, $TweakType -Status "$($EnableStatus[0].Status) the 'Search Box' from Taskbar..."
+    Write-Status -Types $EnableStatus[2].Symbol, $TweakType -Status "$($EnableStatus[0].Status) the 'Search Box' from Taskbar..."
     # [@] (0 = Hide completely, 1 = Show icon only, 2 = Show long Search Box, 3 = Search Icon and Label (Windows 11))
     Set-ItemPropertyVerified -Path "$PathToCUWindowsSearch" -Name "SearchboxTaskbarMode" -Type DWord -Value $Zero
 
@@ -195,7 +195,7 @@ function Register-PersonalTweaksList() {
 
     Write-Caption "Colors"
 
-    If (!$Revert) { Enable-DarkTheme } Else { Disable-DarkTheme }
+    If ($Revert) { Enable-DarkTheme } Else { Disable-DarkTheme }
 
     Write-Status -Types "*", $TweakType -Status "Restoring Taskbar transparency..."
     Set-ItemPropertyVerified -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "EnableTransparency" -Type DWord -Value 1
@@ -252,13 +252,13 @@ function Register-PersonalTweaksList() {
     $TimeoutScreenPluggedIn = 10
 
     $TimeoutStandByBattery = 15
-    $TimeoutStandByPluggedIn = 30
+    $TimeoutStandByPluggedIn = 300
 
     $TimeoutDiskBattery = 20
     $TimeoutDiskPluggedIn = 30
 
-    $TimeoutHibernateBattery = 15
-    $TimeoutHibernatePluggedIn = 15
+    $TimeoutHibernateBattery = 60
+    $TimeoutHibernatePluggedIn = 500
 
     Write-Status -Types "+", $TweakType -Status "Setting the Monitor Timeout to AC: $TimeoutScreenPluggedIn and DC: $TimeoutScreenBattery..."
     powercfg -Change Monitor-Timeout-AC $TimeoutScreenPluggedIn
