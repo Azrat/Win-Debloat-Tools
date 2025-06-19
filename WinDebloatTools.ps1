@@ -122,8 +122,9 @@ function Open-DebloatScript {
         "Optimize-ServicesRunning.ps1",
         "Remove-BloatwareAppsList.ps1",
         "Optimize-Privacy.ps1",
-        #"Optimize-Performance.ps1",
-        "Register-PersonalTweaksList.ps1",
+        "Optimize-Performance.ps1",
+        #"Register-PersonalTweaksList.ps1",
+        "Register-PersonalTweaksList2.ps1",
         "Optimize-Security.ps1",
         "Remove-CapabilitiesList.ps1",
         "Optimize-WindowsFeaturesList.ps1"
