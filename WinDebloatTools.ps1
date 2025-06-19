@@ -99,7 +99,8 @@ function Open-DebloatScript {
     )
 
     If ($Mode -eq 'CLI') {
-        Open-PowerShellFilesCollection -RelativeLocation "src\scripts" -Scripts $Scripts -DoneTitle $DoneTitle -DoneMessage $DoneMessage -OpenFromGUI $false
+        # Open-PowerShellFilesCollection -RelativeLocation "src\scripts" -Scripts $Scripts -DoneTitle $DoneTitle -DoneMessage $DoneMessage -OpenFromGUI $false
+        Open-PowerShellFilesCollection -RelativeLocation "src\scripts" -Scripts $Scripts -NoDialog -OpenFromGUI $false 
     } ElseIf ($Mode -eq 'GUI') {
         Open-PowerShellFilesCollection -RelativeLocation "src\scripts" -Scripts $Scripts -DoneTitle $DoneTitle -DoneMessage $DoneMessage
     }
