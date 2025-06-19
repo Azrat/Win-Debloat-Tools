@@ -195,7 +195,7 @@ function Register-PersonalTweaksList() {
 
     Write-Caption "Colors"
 
-    If ($Revert) { Enable-DarkTheme } Else { Disable-DarkTheme }
+    If (!$Revert) { Enable-DarkTheme } Else { Disable-DarkTheme }
 
     Write-Status -Types "*", $TweakType -Status "Restoring Taskbar transparency..."
     Set-ItemPropertyVerified -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "EnableTransparency" -Type DWord -Value 1
