@@ -134,7 +134,7 @@ function Enable-Cortana() {
 }
 
 function Disable-DarkTheme() {
-    Write-Status -Types "-", "Personal" -Status "Disabling Dark Theme..."
+    Write-Status -Types "*", "Personal" -Status "Disabling Dark Theme..."
     Set-ItemPropertyVerified -Path "$PathToCUThemes" -Name "AppsUseLightTheme" -Type DWord -Value 1
     Set-ItemPropertyVerified -Path "$PathToCUThemes" -Name "SystemUsesLightTheme" -Type DWord -Value 1
 }
