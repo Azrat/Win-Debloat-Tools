@@ -6,7 +6,7 @@ function Main() {
     [CmdletBinding()]
     param (
         [Parameter(Position = 0)]
-        [ValidateSet('CLI', 'GUI')]
+        [ValidateSet('CLI', 'GUI', 'CLI2')]
         [String] $Mode = 'GUI'
     )
 
@@ -61,8 +61,10 @@ function Main() {
             Write-Caption "Arguments: $args"
         } Else { Write-Caption "Arguments: None, running GUI" }
 
-        If ($Mode -eq 'CLI') {
+        If ($Mode -eq 'CLI2') {
             Open-DebloatScript -Mode $Mode
+        } elseif ($Mode -eq 'CLI') {
+            Open-DebloatScript2 -Mode $Mode
         } Else { Show-GUI }
     }
 
@@ -92,6 +94,35 @@ function Open-DebloatScript {
         "Remove-BloatwareAppsList.ps1",
         "Optimize-Privacy.ps1",
         "Optimize-Performance.ps1",
+        "Register-PersonalTweaksList.ps1",
+        "Optimize-Security.ps1",
+        "Remove-CapabilitiesList.ps1",
+        "Optimize-WindowsFeaturesList.ps1"
+    )
+
+    If ($Mode -eq 'CLI') {
+        Open-PowerShellFilesCollection -RelativeLocation "src\scripts" -Scripts $Scripts -DoneTitle $DoneTitle -DoneMessage $DoneMessage -OpenFromGUI $false
+    } ElseIf ($Mode -eq 'GUI') {
+        Open-PowerShellFilesCollection -RelativeLocation "src\scripts" -Scripts $Scripts -DoneTitle $DoneTitle -DoneMessage $DoneMessage
+    }
+
+    function Open-DebloatScript2 {
+    [CmdletBinding()]
+    param(
+        [Parameter(Position = 0)]
+        [ValidateSet('CLI2', 'GUI')]
+        [String] $Mode = 'GUI'
+    )
+
+    $Scripts = @(
+        # [Recommended order]
+        "Backup-System.ps1",
+        "Invoke-DebloatSoftware.ps1",
+        "Optimize-TaskScheduler.ps1",
+        "Optimize-ServicesRunning.ps1",
+        "Remove-BloatwareAppsList.ps1",
+        "Optimize-Privacy.ps1",
+        #"Optimize-Performance.ps1",
         "Register-PersonalTweaksList.ps1",
         "Optimize-Security.ps1",
         "Remove-CapabilitiesList.ps1",
