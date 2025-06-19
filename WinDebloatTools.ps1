@@ -1,4 +1,4 @@
-﻿# Learned from: https://docs.microsoft.com/en-us/powershell/scripting/samples/creating-a-custom-input-box?view=powershell-7.1
+# Learned from: https://docs.microsoft.com/en-us/powershell/scripting/samples/creating-a-custom-input-box?view=powershell-7.1
 # Adapted majorly from https://github.com/ChrisTitusTech/win10script and https://github.com/Sycnex/Windows10Debloater
 # Take Ownership tweak from: https://www.howtogeek.com/howto/windows-vista/add-take-ownership-to-explorer-right-click-menu-in-vista/
 
@@ -6,7 +6,7 @@ function Main() {
     [CmdletBinding()]
     param (
         [Parameter(Position = 0)]
-        [ValidateSet('CLI', 'GUI', 'CLI2')]
+        [ValidateSet('CLI', 'GUI')]
         [String] $Mode = 'GUI'
     )
 
@@ -63,8 +63,6 @@ function Main() {
 
         If ($Mode -eq 'CLI') {
             Open-DebloatScript -Mode $Mode
-        } elseif ($Mode -eq 'CLI2') {
-            Open-DebloatScript2 -Mode $Mode
         } Else { Show-GUI }
     }
 
@@ -101,36 +99,6 @@ function Open-DebloatScript {
     )
 
     If ($Mode -eq 'CLI') {
-        Open-PowerShellFilesCollection -RelativeLocation "src\scripts" -Scripts $Scripts -DoneTitle $DoneTitle -DoneMessage $DoneMessage -OpenFromGUI $false
-    } ElseIf ($Mode -eq 'GUI') {
-        Open-PowerShellFilesCollection -RelativeLocation "src\scripts" -Scripts $Scripts -DoneTitle $DoneTitle -DoneMessage $DoneMessage
-    }
-
-    function Open-DebloatScript2 {
-    [CmdletBinding()]
-    param(
-        [Parameter(Position = 0)]
-        [ValidateSet('CLI2', 'GUI')]
-        [String] $Mode = 'GUI'
-    )
-
-    $Scripts = @(
-        # [Recommended order]
-        "Backup-System.ps1",
-        "Invoke-DebloatSoftware.ps1",
-        "Optimize-TaskScheduler.ps1",
-        "Optimize-ServicesRunning.ps1",
-        "Remove-BloatwareAppsList.ps1",
-        "Optimize-Privacy.ps1",
-        "Optimize-Performance.ps1",
-        #"Register-PersonalTweaksList.ps1",
-        "Register-PersonalTweaksList2.ps1",
-        "Optimize-Security.ps1",
-        "Remove-CapabilitiesList.ps1",
-        "Optimize-WindowsFeaturesList.ps1"
-    )
-
-    If ($Mode -eq 'CLI2') {
         Open-PowerShellFilesCollection -RelativeLocation "src\scripts" -Scripts $Scripts -DoneTitle $DoneTitle -DoneMessage $DoneMessage -OpenFromGUI $false
     } ElseIf ($Mode -eq 'GUI') {
         Open-PowerShellFilesCollection -RelativeLocation "src\scripts" -Scripts $Scripts -DoneTitle $DoneTitle -DoneMessage $DoneMessage
