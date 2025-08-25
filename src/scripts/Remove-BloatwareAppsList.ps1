@@ -58,6 +58,7 @@ function Remove-BloatwareAppsList() {
         "Clipchamp.Clipchamp"				     # Clipchamp – Video Editor
         "Microsoft.OutlookForWindows"            # Microsoft Outlook
         #"MicrosoftTeams"                         # Microsoft Teams
+        #"M*S*Teams"                              # Microsoft Teams (24H2 or older)
         "MicrosoftWindows.Client.WebExperience"  # Taskbar Widgets
 
         # [DIY] Remove the # to Uninstall
